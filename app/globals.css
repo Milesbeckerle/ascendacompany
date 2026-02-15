@@ -1,26 +1,92 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0b0f1a;
+  --foreground: #eef2ff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(124, 58, 237, 0.28), transparent 32%),
+    radial-gradient(circle at 80% 20%, rgba(234, 88, 12, 0.22), transparent 28%),
+    radial-gradient(circle at 30% 80%, rgba(249, 115, 22, 0.16), transparent 34%),
+    var(--background);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.05;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.7) 0.4px, transparent 0.4px);
+  background-size: 4px 4px;
+}
+
+::selection {
+  background: rgba(251, 146, 60, 0.35);
+  color: #fff7ed;
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s ease both;
+}
+
+.animate-float {
+  animation: float 4.2s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 5.2s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulseSoft 3.2s ease-in-out infinite;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.95); filter: blur(1px); }
+  50% { transform: translate(-50%, -50%) scale(1.07); filter: blur(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
