@@ -1,4 +1,6 @@
-# Ascenda — Landing Page Cinematográfica
+# SITE ASCENDA
+
+Landing page imersiva em Next.js + TypeScript + Tailwind + Framer Motion.
 
 ## Rodar localmente
 
@@ -7,29 +9,26 @@ npm i
 npm run dev
 ```
 
-Acesse: `http://localhost:3000`
+Abra `http://localhost:3000`.
 
-## Onde editar WhatsApp
+## Trocar o WhatsApp
 
-Edite `lib/constants.ts` em:
+1. Abra `lib/constants.ts`.
+2. Edite `WHATSAPP_URL` para seu número no formato `https://wa.me/5511999999999`.
 
-- `WHATSAPP_URL`
+## Editar textos e seções
 
-## Onde editar textos
+- Estrutura principal: `app/page.tsx`
+- Seções: `components/sections/*`
+- UI reutilizável: `components/ui/*`
+- Cores e base visual global: `app/globals.css`
 
-- Página e ordem das seções: `app/page.tsx`
-- Navbar fixa: `components/sections/Navbar.tsx`
-- Hero: `components/sections/Hero.tsx`
-- Passagem (pinned/horizontal desktop): `components/sections/Passagem.tsx`
-- Serviços: `components/sections/Services.tsx`
-- Comunidade: `components/sections/Community.tsx`
-- Metodologia: `components/sections/Method.tsx`
-- CTA final: `components/sections/FinalCta.tsx`
+## Deploy na Vercel (passo a passo)
 
-## Deploy na Vercel
-
-1. Suba o projeto para GitHub.
-2. Em `vercel.com`, clique em **Add New > Project**.
-3. Importe o repositório.
-4. Deploy padrão de Next.js.
-5. Atualize `WHATSAPP_URL` e faça novo deploy se necessário.
+1. Suba o projeto para um repositório GitHub.
+2. Acesse [vercel.com](https://vercel.com) e faça login.
+3. Clique em **Add New > Project**.
+4. Importe o repositório `ascendacompany`.
+5. Mantenha os defaults de build (Next.js detectado automaticamente).
+6. Clique em **Deploy**.
+7. Após deploy, atualize `WHATSAPP_URL` se necessário e faça novo push.
